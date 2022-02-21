@@ -93,6 +93,14 @@ namespace SmartAssistant
             Close();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Form9 f9 = new Form9();
+            f9.ShowDialog();
+            Close();
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             Hide();
