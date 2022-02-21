@@ -84,5 +84,13 @@ namespace SmartAssistant
             f6.ShowDialog();
             Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Form8 f8 = new Form8();
+            f8.ShowDialog();
+            Close();
+        }
     }
 }
