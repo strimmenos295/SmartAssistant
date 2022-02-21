@@ -44,8 +44,8 @@ namespace SmartAssistant
         private void button3_Click(object sender, EventArgs e)
         {
             Hide();
-            Form4 f4 = new Form4();
-            f4.ShowDialog();
+            Form9 f9 = new Form9();
+            f9.ShowDialog();
             Close();
         }
     }
