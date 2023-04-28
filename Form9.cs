@@ -19,6 +19,8 @@ namespace SmartAssistant
         StringBuilder builder = new StringBuilder();
         List<Plano> list = new List<Plano>();
 
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
         int timeInSec = 0;
         int elapsedTimeForFood = 0;
         int elapsedTimeForWater = 0;
@@ -57,12 +59,13 @@ namespace SmartAssistant
 
             if (timeInSec == 15 || timeInSec == 40) // για ζημια
             {
-                label1.Visible = true;
+                player.SoundLocation = @"bark.wav";
+                player.Load();
+                player.Play();
+
+                MessageBox.Show("Έγινε ζημιά!");
             }
-            if ((label1.Visible && timeInSec == 20) || label1.Visible && timeInSec == 45)
-            {
-                label1.Visible = false;
-            }
+            
 
             if (timeInSec % 20 == 0) // trone kai pinoun
             {
@@ -100,7 +103,14 @@ namespace SmartAssistant
                 elapsedTimeForFood++;
                 if (elapsedTimeForFood == timeForFood)
                 {
+                    
                     label4.Text = (int.Parse(label4.Text) + (100 * amountForFood)).ToString();
+                    
+                    player.SoundLocation = @"on.wav";
+                    player.Load();
+                    player.Play();
+                    MessageBox.Show("Προστέθηκε Τροφή");
+
                     elapsedTimeForFood = 0;
                     foodButtonWasPressed = false;
                 }
@@ -111,41 +121,22 @@ namespace SmartAssistant
                 elapsedTimeForWater++;
                 if (elapsedTimeForWater == timeForWater)
                 {
+                    
+
                     label5.Text = (int.Parse(label5.Text) + (100 * amountForWater)).ToString();
+                    
+                    player.SoundLocation = @"on.wav";
+                    player.Load();
+                    player.Play();
+                    MessageBox.Show("Προστέθηκε Νερό");
+
                     elapsedTimeForWater = 0;
                     waterButtonWasPressed = false;
                 }
 
             }
 
-            if (autoCare1) //auto taisma
-            {
-                label14.Visible = true;
-                label15.Visible = true;
-
-                if (label18.Text.Equals("9"))
-                {
-                    label4.Text = "100";
-                    label5.Text = "100";
-                    autoCare1 = false;
-                }
-            }
-            if (autoCare2) //auto taisma
-            {
-                label14.Visible = true;
-                label16.Visible = true;
-
-                if (label18.Text.Equals("18"))
-                {
-                    label4.Text = "100";
-                    label5.Text = "100";
-                    autoCare2 = false;
-                }
-            }
-            if (autoCare1 && autoCare2)
-            {
-                label17.Visible = true;
-            }
+            
 
             if (label19.Text.Equals("59") && label21.Text.Equals("59")) //timer
             {
@@ -194,6 +185,8 @@ namespace SmartAssistant
 
         private void Form9_Load(object sender, EventArgs e)
         {
+            
+
             conn = new SQLiteConnection(connectionString);
             Functions f1 = new Functions();
             list = f1.DataBaseSelectAll(conn);
@@ -242,6 +235,86 @@ namespace SmartAssistant
                     break;
                 }
             }
+
+            if (autoCare1) //auto taisma
+            {
+                label14.Visible = true;
+                label15.Visible = true;
+            }
+            if (autoCare2) //auto taisma
+            {
+                label14.Visible = true;
+                label16.Visible = true;
+            }
+            if (autoCare1 && autoCare2)
+            {
+                label17.Visible = true;
+            }
+        }
+
+        private void label4_TextChanged(object sender, EventArgs e)
+        {
+            if (label4.Text.Equals("0"))
+            {
+                player.SoundLocation = @"off.wav";
+                player.Load();
+                player.Play();
+                MessageBox.Show("Τελείωσε η Τροφή");
+            }
+        }
+
+        private void label5_TextChanged(object sender, EventArgs e)
+        {
+            if (label5.Text.Equals("0"))
+            {
+                player.SoundLocation = @"off.wav";
+                player.Load();
+                player.Play();
+                MessageBox.Show("Τελείωσε το Νερό");
+            }
+        }
+
+        private void label18_TextChanged(object sender, EventArgs e)
+        {
+            if (autoCare1) //auto taisma
+            {
+                label14.Visible = true;
+                label15.Visible = true;
+
+                if (label18.Text.Equals("9"))
+                {
+                    label4.Text = "100";
+                    label5.Text = "100";
+
+                    player.SoundLocation = @"on.wav";
+                    player.Load();
+                    player.Play();
+                    MessageBox.Show("Προστέθηκε Νερό και Τροφή");
+
+                    autoCare1 = false;
+                }
+            }
+            if (autoCare2) //auto taisma
+            {
+                label14.Visible = true;
+                label16.Visible = true;
+
+                if (label18.Text.Equals("18"))
+                {
+                    label4.Text = "100";
+                    label5.Text = "100";
+                    autoCare2 = false;
+                }
+            }
+            if (autoCare1 && autoCare2)
+            {
+                label17.Visible = true;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Αν στις 9 και στις 6 είστε εκτός σπιτιού θα μπει αυτόματα τροφή και νερό. Μπορείτε πατώντας τα κουμπιά βάλε τροφή και βάλε νερό να βάλετε οποιαδήποτε στιγμή και όση ποσότητα φαγητού και νερού θέλετε. Κατά καιρούς θα σας έρχονται ειδοποιήσεις σε περίπτωση ζημιάς και σε περίπτωση που τέλειωσε η τροφή και το νερό.");
         }
     }
 }

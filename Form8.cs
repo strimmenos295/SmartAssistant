@@ -25,8 +25,13 @@ namespace SmartAssistant
 
         private void button1_Click(object sender, EventArgs e)
         {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
             if (comboBox1.Text.Equals("") )
             {
+                player.SoundLocation = @"off.wav";
+                player.Load();
+                player.Play();
                 MessageBox.Show("Δεν έδωσες ώρα έναρξης δραστηριότητας!");
             }
             else
@@ -43,17 +48,26 @@ namespace SmartAssistant
                 }
                 catch (SQLiteException)
                 {
+                    player.SoundLocation = @"off.wav";
+                    player.Load();
+                    player.Play();
                     MessageBox.Show("Αποτυχία.");
                 }
 
 
                 if (done&&num!=0)
                 {
+                    player.SoundLocation = @"on.wav";
+                    player.Load();
+                    player.Play();
                     MessageBox.Show("Η δραστηριότητα διαγραφτηκε!");
                     conn.Close();
                 }
                 else if (done&&num==0)
                 {
+                    player.SoundLocation = @"off.wav";
+                    player.Load();
+                    player.Play();
                     MessageBox.Show("Η δραστηριότητα δεν υπήρχε!");
                     conn.Close();
                 }
@@ -80,6 +94,11 @@ namespace SmartAssistant
             Form7 f7 = new Form7();
             f7.ShowDialog();
             Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Εκχωρήστε την ώρα έναρξης της δραστηριότητας που θέλετε να διαγράψετε και πατήστε Διαγραφή Δραστηριότητας. Αν όλα πήγαν καλά διαγράψατε την δραστηριότητα από το πλάνο σας. Διαφορετικά θα σας εμφανιστεί κατάλληλο μήνυμα.\n\nΑν θέλετε να γυρίσετε στην λίστα με τις δραστηριότητες πατήστε Εμφάνιση Δραστηριοτήτων.");
         }
     }
 }

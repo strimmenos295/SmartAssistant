@@ -39,10 +39,12 @@ namespace SmartAssistant
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "1",
@@ -77,6 +79,7 @@ namespace SmartAssistant
             // 
             // comboBox2
             // 
+            this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Πανεπιστήμιο",
@@ -107,6 +110,7 @@ namespace SmartAssistant
             // 
             // comboBox3
             // 
+            this.comboBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "1",
@@ -176,6 +180,7 @@ namespace SmartAssistant
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.Crimson;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Century", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.button4.Location = new System.Drawing.Point(597, 24);
             this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -188,6 +193,7 @@ namespace SmartAssistant
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(201, 139);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 48);
@@ -198,7 +204,8 @@ namespace SmartAssistant
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(597, 139);
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(597, 151);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 48);
             this.button2.TabIndex = 54;
@@ -206,11 +213,27 @@ namespace SmartAssistant
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Font = new System.Drawing.Font("Century", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.button5.Location = new System.Drawing.Point(597, 102);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(128, 44);
+            this.button5.TabIndex = 77;
+            this.button5.Text = "Βοήθεια";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 465);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
@@ -221,9 +244,11 @@ namespace SmartAssistant
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form6";
-            this.Text = "Form6";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Εισαγωγή Δραστηριότητας";
             this.Load += new System.EventHandler(this.Form6_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -242,5 +267,6 @@ namespace SmartAssistant
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
     }
 }

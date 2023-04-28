@@ -100,5 +100,18 @@ namespace SmartAssistant
             f5.ShowDialog();
             Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Form10 f10 = new Form10();
+            f10.ShowDialog();
+            Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Στην αρχή βλέπετε αναγραμμένο το πρόγραμμά σας για την σημερινή ημέρα.\nΕπιλέξτε Εισαγωγή Δραστηριότητας αν θέλετε να εισάγετε κάποια δραστηριότητα.\nΕπιλέξτε Διαγραφή Δραστηριότητας αν θέλετε να διαγράψετε κάποια δραστηριότητα.\nΕπιλέξτε Εύρεση Διαδρομής αν θέλετε να βρείτε ένα βέλτιστο δρομολόγιο προς μία δραστηριότητά σας.");
+        }
     }
 }

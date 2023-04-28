@@ -39,9 +39,15 @@ namespace SmartAssistant
 
         private void button1_Click(object sender, EventArgs e)
         {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
             if (comboBox1.Text.Equals("") || comboBox2.Text.Equals("") || comboBox3.Text.Equals(""))
             {
-                MessageBox.Show("You must give all the information needed!");
+                player.SoundLocation = @"off.wav";
+                player.Load();
+                player.Play();
+                MessageBox.Show("Πρέπει να δώσεις όλες τις πληροφορίες!");
+
             }
             else
             {
@@ -62,12 +68,18 @@ namespace SmartAssistant
                 }
                 catch (SQLiteException)
                 {
+                    player.SoundLocation = @"off.wav";
+                    player.Load();
+                    player.Play();
                     MessageBox.Show("Παρακαλώ επιλέξτε διαφορετική ώρα.");
                 }
 
 
                 if (done)
                 {
+                    player.SoundLocation = @"on.wav";
+                    player.Load();
+                    player.Play();
                     MessageBox.Show("Η δραστηριότητα αποθηκεύτηκε!");
                     conn.Close();
                 }
@@ -81,6 +93,11 @@ namespace SmartAssistant
             Form7 f7 = new Form7();
             f7.ShowDialog();
             Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Εκχωρήστε την ώρα έναρξης και λήξης της δραστηριότητας καθώς και την ίδια Δραστηριότητα στα διαθέσιμα πεδία. Κατόπιν πατήστε Εισαγωγή Δραστηριότητας. Αν όλα πάνε καλά τα καταφέρατε. Διαφορετικά θα σας βγει μήνυμα για το τι πήγε στραβά.\nΑν θέλετε να γυρίσετε στην λίστα με τις δραστηριότητες πατήστε Εμφάνιση Δραστηριοτήτων.");
         }
     }
 }
